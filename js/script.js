@@ -1,7 +1,7 @@
 $(() => {
 
-  const $mrsDoubtfire = $('.mrsDoubtfire');
-  const $goodFallingPiece = $('.good-pos-seven');
+  // const $mrsDoubtfire = $('.mrsDoubtfire');
+  const $goodFallingPiece = $('.good-pos-one');
   const $countdownClock = $('#game-clock');
 
   //Countdown Timer
@@ -27,7 +27,7 @@ $(() => {
       }, 1000);
       timerIsRunning = true;
     }
-    // add "ringing" class to timer when time reaches 0
+    // when timer reaches 0 run playAgain() which change display of summary from none etc.
   }
 
   // //mousefollow
@@ -39,73 +39,68 @@ $(() => {
   // $mrsDoubtfire.position().left;
   // $mrsDoubtfire.position().top;
 
-  // const movementData = function () {
+  // function movementData () {
   //   setInterval(() => {
   //     $mrsDoubtfire.css('marginLeft', parseInt($mrsDoubtfire.css('marginLeft'))+1);
   //     console.log($mrsDoubtfire);
   //   }, 10);
-  // };
+  // }
 
   const fallingPieces = function () {
     setInterval(() => {
       $goodFallingPiece.css('marginTop', parseInt($goodFallingPiece.css('marginTop'))+1);
-      collisionMath();
+      // collisionMath();
     }, 30);
   };
 
 
-  // //ARROW KEY MOVEMENTS
+  // MOVEMENTS
   // let gameWindow = $('#game-area')
-  let mrsDfPiece = $('.mrsDoubtfire')
-  //   w = gameWindow.width() - mrsDfPiece.width(),
-  //   d = {},
-  //   x = 3;
-  //
-  // function newv(v,a,b) {
-  //   let n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
-  //   return n < 0 ? 0 : n > w ? w : n;
-  // }
-  //
-  // $(window).keydown(function(e) {
-  //   d[e.which] = true;
-  // });
-  // $(window).keydown(function(e) {
-  //   d[e.which] = false;
-  // });
-  //
-  // setInterval(function() {
-  //   mrsDfPiece.css({
-  //     left: function(i,v) {
-  //       return newv(v,37,39);
-  //     },
-  //     top: function(i,v)  {
-  //       return newv(v,38,40);
-  //     }
-  //   });
-  // }, 20);
+  const $fallingPieces = $('.piece');
+  const $fallingPiecesOffset = $fallingPieces.offset();
+  const $gamePiece = $('.mrsDoubtfire');
+  const $gamePieceOffset = $gamePiece.offset();
+  const $badPiece = ('.bad');
+  // const $goodPiece = ('.good');
 
-  let left = 0;
-  let top = 0;
+  function collisionTest() {
 
-  function move(e) {
-    if (e.keyCode === 40) {
-      top += 2;
-      mrsDfPiece.style.top = (parseInt(top) + top) + 'px';
-    }
+      //COLLISIONS
+
+      console.log($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width(), $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left , $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height());
+
+      if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top && $badPiece) {
+        console.log('bad collision recorded');
+        // badCollision();
+      }
+
   }
-  document.onkeydown = move;
 
-
-
-
-
-
-  //COLLISION MATH - NOT WORKING
-  const collisionMath = function() {
-    if ($mrsDoubtfire.left < $goodFallingPiece.position().left + $goodFallingPiece.position().width && $mrsDoubtfire.left + $mrsDoubtfire.width > $goodFallingPiece.position().left && $mrsDoubtfire.top < $goodFallingPiece.position().top + $goodFallingPiece.position().height && $mrsDoubtfire.height + $mrsDoubtfire.top > $goodFallingPiece.position().top) {
-      console.log('collision detected');
+  $(document).keydown(function(e) {
+    const $key = $('.mrsDoubtfire');
+    const keyCode = e.keyCode;
+    collisionTest();
+    if(keyCode === 37) {
+      $key.css('margin-left', '-=10px');
+    }else if(keyCode === 38) {
+      $key.css('margin-top', '-=10px');
+    }else if(keyCode === 39) {
+      $key.css('margin-left', '+=10px');
+    }else if(keyCode === 40) {
+      $key.css('margin-top', '+=10px');
     }
-  };
+  });
+
+  // let points = 0;
+  // const $pointCounter = $('#points-counter');
+  // function goodCollision() {
+  //   points = points + 10;
+  //   $pointCounter.text(points);
+  // }
+  // function badCollision() {
+  //   points = points - 5;
+  //   $pointCounter.text(points);
+  // }
 
 
   function gameStart() {
@@ -114,44 +109,6 @@ $(() => {
     startStopTimer();
   }
 
-  $goodFallingPiece.on('click', collisionMath());
-
   gameStart();
-  // // let $fallingPiecePosition = ;
-  //
-  // $(document).mousemove(function(e){
-  //   $mrsDoubtfire.css({left: e.pageX, top: e.pageY});
-  // });
-  //
-  // const mrsDfCollMath = {x: 5, y: 5, width: 30, height: 60};
-  // const fallPieceCollMath = {x: 5, y: 5, width: 30, height: 30};
-  //
-  // const movementData = function () {
-  //   setInterval(() => {
-  //     $mrsDoubtfire.css('marginLeft', parseInt($mrsDoubtfire.css('marginLeft'))+1);
-  //     console.log($mrsDoubtfire);
-  //   }, 10);
-  // };
-  //
-
-  //
-
-
-
-
-
-
-
-
-  // movementData();
-
-  // collisionMath();
-
-
-
-
-  // // collisionMath();
-
-
 
 });

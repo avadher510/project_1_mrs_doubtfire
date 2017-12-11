@@ -18,12 +18,12 @@ h1 {
   border: 5px ridge grey;
   height: 500px;
   margin: 0 auto;
-  width: 90%;
+  width: 900px;
 }
 
 /* Timer */
 
-#game-clock {
+.features {
   display: inline-block;
   float: right;
   margin: 0 auto;
@@ -53,12 +53,11 @@ h1 {
   display: flex;
 }
 
-.fallingpiece {
+.piece {
   display: flex;
   height: 30px;
   width: 30px;
   border: 3px solid green;
-  z-index: 1;
 }
 
 .good {
