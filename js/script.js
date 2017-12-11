@@ -1,5 +1,9 @@
 $(() => {
+  // const $playButton = $('#play-btn');
 
+  // function gameLoad() {
+  //
+  // }
   // const $mrsDoubtfire = $('.mrsDoubtfire');
   const $goodFallingPiece = $('.good-pos-one');
   const $countdownClock = $('#game-clock');
@@ -56,24 +60,31 @@ $(() => {
 
   // MOVEMENTS
   // let gameWindow = $('#game-area')
-  const $fallingPieces = $('.piece');
-  const $fallingPiecesOffset = $fallingPieces.offset();
-  const $gamePiece = $('.mrsDoubtfire');
-  const $gamePieceOffset = $gamePiece.offset();
-  const $badPiece = ('.bad');
-  // const $goodPiece = ('.good');
+  let $fallingPieces = $('.piece');
+  let $fallingPiecesOffset = $fallingPieces.offset();
+  let $gamePiece = $('.mrsDoubtfire');
+  let $gamePieceOffset = $gamePiece.offset();
+  let $badPiece = ('.bad');
+  let $goodPiece = ('.good');
 
   function collisionTest() {
+    $fallingPieces = $('.piece');
+    $fallingPiecesOffset = $fallingPieces.offset();
+    $gamePiece = $('.mrsDoubtfire');
+    $gamePieceOffset = $gamePiece.offset();
+    $badPiece = ('.bad');
+    $goodPiece = ('.good');
 
-      //COLLISIONS
+    //COLLISIONS
 
-      console.log($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width(), $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left , $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height());
+    console.log($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width(), $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left , $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height());
 
-      if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top && $badPiece) {
-        console.log('bad collision recorded');
-        // badCollision();
-      }
-
+    if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top && $badPiece) {
+      console.log('bad collision recorded');
+      // badCollision();
+    }else if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top && $goodPiece) {
+      console.log('good collision recorded');
+    }
   }
 
   $(document).keydown(function(e) {

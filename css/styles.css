@@ -11,6 +11,26 @@ h1 {
   display: inline-block;
 }
 
+/*GAME LOAD STYLES*/
+.welcome {
+  position: fixed;
+  display: inline-block;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: 5px ridge grey;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.welcome button {
+  color: #3AF73A;
+  border: 5px groove grey;
+  background-color: grey;
+  font-size: 25px;
+  font-family: 'Monoton', cursive;
+}
+
 /*Game Area Styles*/
 #game-area {
   background: url(/Users/anishvadher/development/project_1/images/cartoon_sky_bg_game.png);
