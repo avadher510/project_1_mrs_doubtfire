@@ -54,35 +54,48 @@ $(() => {
   };
 
 
-  //ARROW KEY MOVEMENTS
-  let gameWindow = $('#game-area');
-  let mrsDfPiece = $('.mrsDoubtfire');
-  let w = gameWindow.width() - mrsDfPiece.width();
-  let d = {};
-  let x = 3;
+  // //ARROW KEY MOVEMENTS
+  // let gameWindow = $('#game-area')
+  let mrsDfPiece = $('.mrsDoubtfire')
+  //   w = gameWindow.width() - mrsDfPiece.width(),
+  //   d = {},
+  //   x = 3;
+  //
+  // function newv(v,a,b) {
+  //   let n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
+  //   return n < 0 ? 0 : n > w ? w : n;
+  // }
+  //
+  // $(window).keydown(function(e) {
+  //   d[e.which] = true;
+  // });
+  // $(window).keydown(function(e) {
+  //   d[e.which] = false;
+  // });
+  //
+  // setInterval(function() {
+  //   mrsDfPiece.css({
+  //     left: function(i,v) {
+  //       return newv(v,37,39);
+  //     },
+  //     top: function(i,v)  {
+  //       return newv(v,38,40);
+  //     }
+  //   });
+  // }, 20);
 
-  function newv(v,a,b) {
-    let n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
-    return n < 0 ? 0 : n > w ? w : n;
+  let left = 0;
+  let top = 0;
+
+  function move(e) {
+    if (e.keyCode === 40) {
+      top += 2;
+      mrsDfPiece.style.top = (parseInt(top) + top) + 'px';
+    }
   }
+  document.onkeydown = move;
 
-  $(window).keydown(function(e) {
-    d[e.which] = true;
-  });
-  $(window).keydown(function(e) {
-    d[e.which] = false;
-  });
 
-  setInterval(function() {
-    mrsDfPiece.css({
-      left: function(i,v) {
-        return newv(v,37,39);
-      },
-      top: function(i,v)  {
-        return newv(v,38,40);
-      }
-    });
-  }, 20);
 
 
 
