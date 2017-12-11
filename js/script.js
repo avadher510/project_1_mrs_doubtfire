@@ -39,12 +39,12 @@ $(() => {
   // $mrsDoubtfire.position().left;
   // $mrsDoubtfire.position().top;
 
-  const movementData = function () {
-    setInterval(() => {
-      $mrsDoubtfire.css('marginLeft', parseInt($mrsDoubtfire.css('marginLeft'))+1);
-      console.log($mrsDoubtfire);
-    }, 10);
-  };
+  // const movementData = function () {
+  //   setInterval(() => {
+  //     $mrsDoubtfire.css('marginLeft', parseInt($mrsDoubtfire.css('marginLeft'))+1);
+  //     console.log($mrsDoubtfire);
+  //   }, 10);
+  // };
 
   const fallingPieces = function () {
     setInterval(() => {
@@ -56,7 +56,7 @@ $(() => {
 
   //ARROW KEY MOVEMENTS
   let gameWindow = $('#game-area');
-  let mrsDfPiece = $mrsDoubtfire;
+  let mrsDfPiece = $('.mrsDoubtfire');
   let w = gameWindow.width() - mrsDfPiece.width();
   let d = {};
   let x = 3;
@@ -66,7 +66,24 @@ $(() => {
     return n < 0 ? 0 : n > w ? w : n;
   }
 
-  $(window)
+  $(window).keydown(function(e) {
+    d[e.which] = true;
+  });
+  $(window).keydown(function(e) {
+    d[e.which] = false;
+  });
+
+  setInterval(function() {
+    mrsDfPiece.css({
+      left: function(i,v) {
+        return newv(v,37,39);
+      },
+      top: function(i,v)  {
+        return newv(v,38,40);
+      }
+    });
+  }, 20);
+
 
 
 
@@ -79,7 +96,7 @@ $(() => {
 
 
   function gameStart() {
-    movementData();
+    // movementData();
     fallingPieces();
     startStopTimer();
   }
