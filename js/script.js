@@ -1,9 +1,14 @@
 $(() => {
-  // const $playButton = $('#play-btn');
+  //On Click of play button, then game begins
+  const $playButton = $('#play-btn');
+  const $welcome = $('.welcome');
 
-  // function gameLoad() {
-  //
-  // }
+  $playButton.on('click', function() {
+    $welcome.css('display', 'none');
+    gameStart();
+  });
+
+
   // const $mrsDoubtfire = $('.mrsDoubtfire');
   const $goodFallingPiece = $('.good-pos-one');
   const $countdownClock = $('#game-clock');
@@ -34,29 +39,12 @@ $(() => {
     // when timer reaches 0 run playAgain() which change display of summary from none etc.
   }
 
-  // //mousefollow
-  // $(document).on('mousemove', function(e){
-  //   $mrsDoubtfire.css({
-  //     left: e.pageX,
-  //     top: e.pageY
-  //   });
-  // $mrsDoubtfire.position().left;
-  // $mrsDoubtfire.position().top;
-
-  // function movementData () {
-  //   setInterval(() => {
-  //     $mrsDoubtfire.css('marginLeft', parseInt($mrsDoubtfire.css('marginLeft'))+1);
-  //     console.log($mrsDoubtfire);
-  //   }, 10);
-  // }
-
   const fallingPieces = function () {
     setInterval(() => {
       $goodFallingPiece.css('marginTop', parseInt($goodFallingPiece.css('marginTop'))+1);
       // collisionMath();
     }, 30);
   };
-
 
   // MOVEMENTS
   // let gameWindow = $('#game-area')
@@ -77,7 +65,7 @@ $(() => {
 
     //COLLISIONS
 
-    console.log($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width(), $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left , $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height());
+    // console.log($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width(), $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left , $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height());
 
     if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top && $badPiece) {
       console.log('bad collision recorded');
@@ -115,11 +103,8 @@ $(() => {
 
 
   function gameStart() {
-    // movementData();
     fallingPieces();
     startStopTimer();
   }
-
-  gameStart();
 
 });

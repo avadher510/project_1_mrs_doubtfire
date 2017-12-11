@@ -14,12 +14,12 @@ h1 {
 /*GAME LOAD STYLES*/
 .welcome {
   position: fixed;
+  float: left;
   display: inline-block;
   text-align: center;
   background-color: black;
   color: white;
   border: 5px ridge grey;
-  margin: 0 auto;
   padding: 5px;
 }
 
