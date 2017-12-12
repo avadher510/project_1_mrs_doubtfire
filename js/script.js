@@ -10,7 +10,6 @@ $(() => {
 
 
   // const $mrsDoubtfire = $('.mrsDoubtfire');
-  const $goodFallingPiece = $('.good-pos-one');
   const $countdownClock = $('#game-clock');
 
   //Countdown Timer
@@ -39,41 +38,67 @@ $(() => {
     // when timer reaches 0 run playAgain() which change display of summary from none etc.
   }
 
-  const fallingPieces = function () {
-    setInterval(() => {
-      $goodFallingPiece.css('marginTop', parseInt($goodFallingPiece.css('marginTop'))+1);
-      // collisionMath();
-    }, 30);
-  };
-
   // MOVEMENTS
-  // let gameWindow = $('#game-area')
   let $fallingPieces = $('.piece');
   let $fallingPiecesOffset = $fallingPieces.offset();
   let $gamePiece = $('.mrsDoubtfire');
   let $gamePieceOffset = $gamePiece.offset();
+  let $endZone = $('.falling-div-coll');
+  let $endZoneOffset = $endZone.offset();
   let $badPiece = ('.bad');
   let $goodPiece = ('.good');
+  let pointAcc = 0;
 
+  const fallingPieces = function () {
+    setInterval(() => {
+      endZoneReach();
+      $fallingPieces.css('marginTop', parseInt($fallingPieces.css('marginTop'))+1);
+    }, 30);
+  };
+
+  function endZoneReach() {
+    if($fallingPiecesOffset.left <= $endZoneOffset.left + $endZone.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $endZoneOffset.left && $fallingPiecesOffset.top < $endZoneOffset.top + $endZone.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $endZoneOffset.top) {
+      console.log('hit the bottom');
+      $
+    }
+  }
+
+  // const collisionCheck = function() {
+  //
+  // };
+
+  let $pointCounter = $('#points-counter');
+  // let gameWindow = $('#game-area')
   function collisionTest() {
     $fallingPieces = $('.piece');
     $fallingPiecesOffset = $fallingPieces.offset();
     $gamePiece = $('.mrsDoubtfire');
     $gamePieceOffset = $gamePiece.offset();
+    $endZone = $('.falling-div-coll');
+    $endZoneOffset = $endZone.offset();
     $badPiece = ('.bad');
     $goodPiece = ('.good');
+    $pointCounter = $('#points-counter');
 
     //COLLISIONS
 
     // console.log($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width(), $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left , $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height());
-
-    if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top && $badPiece) {
-      console.log('bad collision recorded');
-      // badCollision();
-    }else if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top && $goodPiece) {
-      console.log('good collision recorded');
+    //GAME PIECE COLLISION
+    if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top) {
+      if($fallingPieces.hasClass('bad')) {
+        console.log('bad collision recorded');
+        pointAcc = pointAcc + 10;
+        console.log(pointAcc);
+        $pointCounter.text(pointAcc);
+      }else {
+        console.log('GREAT GOOD ONE');
+      }
     }
+
+    // Falling DIVs at bottom of game area
   }
+
+
 
   $(document).keydown(function(e) {
     const $key = $('.mrsDoubtfire');
@@ -91,7 +116,7 @@ $(() => {
   });
 
   // let points = 0;
-  // const $pointCounter = $('#points-counter');
+  //
   // function goodCollision() {
   //   points = points + 10;
   //   $pointCounter.text(points);

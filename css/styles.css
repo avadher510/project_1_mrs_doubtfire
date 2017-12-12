@@ -29,6 +29,7 @@ h1 {
   background-color: grey;
   font-size: 25px;
   font-family: 'Monoton', cursive;
+  cursor: pointer;
 }
 
 /*Game Area Styles*/
@@ -39,6 +40,15 @@ h1 {
   height: 500px;
   margin: 0 auto;
   width: 900px;
+}
+
+.falling-div-coll {
+  position: absolute;
+  width: 898px;
+  height: 2px;
+  border: 1px solid red;
+  margin-top: -10px;
+  margin-left: 59px;
 }
 
 /* Timer */
