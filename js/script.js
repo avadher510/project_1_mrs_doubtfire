@@ -4,11 +4,22 @@ $(() => {
   //On Click of play button, then game begins
   const $playButton = $('#play-btn');
   const $welcome = $('.welcome');
+  const $livesLeft = $('#lives');
+  const $summary = $('.summary');
+  let startingLives = 3;
 
   $playButton.on('click', function() {
     $welcome.css('display', 'none');
     gameStart();
   });
+
+  //Lives functionality
+  $livesLeft.text(startingLives);
+  function lifeMonitoring() {
+    if(startingLives === 0) {
+      $summary.css('display', 'inline-block');
+    }
+  }
 
 
   // const $mrsDoubtfire = $('.mrsDoubtfire');
@@ -38,7 +49,7 @@ $(() => {
     // when timer reaches 0 run playAgain() which change display of summary from none etc.
   }
 
-  // MOVEMENTS
+  // Fallings Pieces
   let $fallingPieces = $('.piece');
   // let $fallingPiecesOffset = $fallingPieces.offset();
   let $gamePiece = $('.mrsDoubtfire');
@@ -233,14 +244,8 @@ $(() => {
       fallingPiecesOffsets.push($piecesArray[i].offset());
     }
 
-    //CREATING DIV RANDOMLY
-    // function pieceCreated() {
-    //
-    // }
-
     //COLLISIONS
     //GAME PIECE COLLISION
-    //NOT APPLYING TO ALL DIVS!!
     for(let i=0; i<$piecesArray.length; i++) {
       if(fallingPiecesOffsets[i].left <= $gamePieceOffset.left + $gamePiece.width() && fallingPiecesOffsets[i].left + $fallingPieces.width() > $gamePieceOffset.left && fallingPiecesOffsets[i].top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + fallingPiecesOffsets[i].top > $gamePieceOffset.top) {
         piecesArraySingle= $piecesArray[i].hasClass('good');
@@ -267,9 +272,12 @@ $(() => {
   function negativeCollision() {
     pointAcc = pointAcc - 100;
     $pointCounter.text(pointAcc);
+    startingLives = startingLives - 1;
+    $livesLeft.text(startingLives);
+    lifeMonitoring();
   }
 
-
+  //ENDZONE working for each div specifically
   function endZoneReach() {
     let piecesArrayEndZone = null;
     for(let i = 0; i < $piecesArray.length; i++) {

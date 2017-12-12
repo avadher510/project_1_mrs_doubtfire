@@ -32,6 +32,26 @@ h1 {
   cursor: pointer;
 }
 
+.summary {
+  display: none;
+  position: fixed;
+  float: left;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: 5px ridge grey;
+  padding: 5px;
+}
+
+.summary button {
+  color: #3AF73A;
+  border: 5px groove grey;
+  background-color: grey;
+  font-size: 25px;
+  font-family: 'Monoton', cursive;
+  cursor: pointer;
+}
+
 /*Game Area Styles*/
 #game-area {
   background: url(/Users/anishvadher/development/project_1/images/cartoon_sky_bg_game.png);
