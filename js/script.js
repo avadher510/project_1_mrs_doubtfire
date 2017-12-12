@@ -57,10 +57,9 @@ $(() => {
   };
 
   function endZoneReach() {
-    console.log($fallingPieces.offset());
-
     if($fallingPieces.offset().left <= $endZone.offset().left + $endZone.width() && $fallingPieces.offset().left + $fallingPieces.width() > $endZone.offset().left && $fallingPieces.offset().top < $endZone.offset().top + $endZone.height() && $fallingPieces.height() + $fallingPieces.offset().top > $endZone.offset().top) {
       console.log('hit the bottom');
+      $('.piece').hide();
     }
   }
 
