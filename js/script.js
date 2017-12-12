@@ -44,9 +44,9 @@ $(() => {
   let $gamePiece = $('.mrsDoubtfire');
   let $gamePieceOffset = $gamePiece.offset();
   let $endZone = $('.falling-div-coll');
-  let $endZoneOffset = $endZone.offset();
-  let $badPiece = ('.bad');
-  let $goodPiece = ('.good');
+  // let $endZoneOffset = $endZone.offset();
+  // let $badPiece = ('.bad');
+  // let $goodPiece = ('.good');
   let pointAcc = 0;
 
   const fallingPieces = function () {
@@ -57,9 +57,10 @@ $(() => {
   };
 
   function endZoneReach() {
-    if($fallingPiecesOffset.left <= $endZoneOffset.left + $endZone.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $endZoneOffset.left && $fallingPiecesOffset.top < $endZoneOffset.top + $endZone.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $endZoneOffset.top) {
+    console.log($fallingPieces.offset());
+
+    if($fallingPieces.offset().left <= $endZone.offset().left + $endZone.width() && $fallingPieces.offset().left + $fallingPieces.width() > $endZone.offset().left && $fallingPieces.offset().top < $endZone.offset().top + $endZone.height() && $fallingPieces.height() + $fallingPieces.offset().top > $endZone.offset().top) {
       console.log('hit the bottom');
-      $
     }
   }
 
@@ -74,16 +75,13 @@ $(() => {
     $fallingPiecesOffset = $fallingPieces.offset();
     $gamePiece = $('.mrsDoubtfire');
     $gamePieceOffset = $gamePiece.offset();
-    $endZone = $('.falling-div-coll');
-    $endZoneOffset = $endZone.offset();
-    $badPiece = ('.bad');
-    $goodPiece = ('.good');
     $pointCounter = $('#points-counter');
 
     //COLLISIONS
 
     // console.log($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width(), $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left , $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height());
     //GAME PIECE COLLISION
+    //NOT APPLYING TO ALL DIVS!!
     if($fallingPiecesOffset.left <= $gamePieceOffset.left + $gamePiece.width() && $fallingPiecesOffset.left + $fallingPieces.width() > $gamePieceOffset.left && $fallingPiecesOffset.top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + $fallingPiecesOffset.top > $gamePieceOffset.top) {
       if($fallingPieces.hasClass('bad')) {
         console.log('bad collision recorded');
