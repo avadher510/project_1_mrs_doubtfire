@@ -36,6 +36,9 @@ h1 {
   display: none;
   position: fixed;
   float: left;
+  margin-left: 400px;
+  height: 400px;
+  width: 500px;
   text-align: center;
   background-color: black;
   color: white;
@@ -65,11 +68,10 @@ h1 {
 
 .falling-div-coll {
   position: absolute;
-  width: 898px;
+  width: 100%;
   height: 2px;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   margin-top: -10px;
-  margin-left: 59px;
 }
 
 /* Timer */

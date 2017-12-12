@@ -10,6 +10,9 @@
   </head>
   <body>
     <h1>Mrs Doubtfire Goes Fruiting</h1>
+    <audio id='maintrack'>
+      <source src="sounds/aerosmith-dudelooks.mp3" type="audio/mp3">
+    </audio>
     <div class='features' id='game-clock'>60</div>
     <div class='features' id='points-counter'></div>
     <div class='features' id='lives'></div>
@@ -22,8 +25,9 @@
       <button id='play-btn'>PLAY!!</button>
     </div>
     <div class="summary">
-      <h2></h2>
-      <p></p>
+      <h2>Good Effort but you are out of lives</h2>
+      <h3>Your Final Score is:
+      <p id='lifelostscore'></p>
       <button id='play-btn'>PLAY AGAIN!!</button>
     </div>
 
