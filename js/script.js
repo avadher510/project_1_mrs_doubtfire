@@ -14,7 +14,7 @@ $(() => {
   const $summaryLose = $('#lose');
   const $summaryWin = $('#win');
   const $scoreSumBox = $('.finalscore');
-  const $livesSumBox = $('.finallives')
+  const $livesSumBox = $('.finallives');
   let startingLives = 3;
   let timeRemaining = 60;
   let timerIsRunning = false;
@@ -32,6 +32,12 @@ $(() => {
     $welcome.css('display', 'none');
     gameStart();
   });
+
+  // Game Pieces on load
+  function loadPieces() {
+    $fallingPieces.css('display', 'flex');
+    $gamePiece.css('display', 'inline-block');
+  }
 
   //Lives functionality
   function livesAtStart() {
@@ -185,6 +191,7 @@ $(() => {
     startStopTimer();
     livesAtStart();
     pointsAtStart();
+    loadPieces();
   }
 
 });
