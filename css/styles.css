@@ -76,6 +76,12 @@ h2 {
   cursor: pointer;
 }
 
+.endgame {
+  color: #3AF73A;
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .collected {
   visibility: hidden;
 }
