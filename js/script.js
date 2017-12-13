@@ -10,7 +10,7 @@ $(() => {
   const $badPieces = $('.bad');
   const $endZone = $('.falling-div-coll');
   const $piecesArray = [$('.good-pos-one'), $('.good-pos-two'), $('.good-pos-three'), $('.good-pos-four'), $('.good-pos-five'), $('.good-pos-six'), $('.good-pos-seven'), $('.good-pos-eight'), $('.good-pos-nine'), $('.good-pos-ten'), $('.good-pos-eleven'), $('.good-pos-twelve'), $('.good-pos-thirteen'), $('.good-pos-fourteen'), $('.good-pos-fifteen'), $('.good-pos-sixteen'), $('.good-pos-seventeen'), $('.good-pos-eighteen'), $('.good-pos-nineteen'), $('.bad-pos-one'), $('.bad-pos-two') , $('.bad-pos-three') , $('.bad-pos-four') , $('.bad-pos-five') , $('.bad-pos-six') , $('.bad-pos-seven') , $('.bad-pos-eight') , $('.bad-pos-nine') , $('.bad-pos-ten') , $('.bad-pos-eleven') , $('.bad-pos-twelve')];
-  const audioOnLoad = document.getElementById('welcome-hello');
+
   // const gameTrack = document.getElementById('maintrack');
   // const $audio
   const $summaryLose = $('#lose');
@@ -28,8 +28,8 @@ $(() => {
   let pointAcc = 0;
   let $pointCounter = $('#points-counter');
 
-  // Sounds
-  audioOnLoad.src = 'sounds/mrd-hello.wav';
+
+
 
   //On Click of play button, then game begins
   $playButton.on('click', function() {
@@ -41,7 +41,6 @@ $(() => {
   function gameImagesGood() {
     for (let i=0; i<$goodPieces.length; i++) {
       const ranMathGood = Math.floor(Math.random() * goodImagesArray.length);
-      console.log(ranMathGood);
       $($goodPieces[i]).css('background-image', `url('../${goodImagesArray[ranMathGood]}')`);
     }
   }
@@ -49,7 +48,6 @@ $(() => {
   function gameImagesBad() {
     for (let i=0; i<$badPieces.length; i++) {
       const ranMathBad = Math.floor(Math.random() * badImagesArray.length);
-      console.log(ranMathBad);
       $($badPieces[i]).css('background-image', `url('../${badImagesArray[ranMathBad]}')`);
     }
   }
@@ -169,9 +167,9 @@ $(() => {
 
         if(piecesArrayEndZone === true) {
           negativeCollision();
-          $ezPiece.hide();
+          $ezPiece.css('margin-top', '0');
         } else {
-          $ezPiece.hide();
+          $ezPiece.css('margin-top', '0');
         }
       }
     }
@@ -185,13 +183,13 @@ $(() => {
     collisionTest();
 
     if(keyCode === 37) {
-      $key.css('margin-left', '-=8px');
+      $key.css('margin-left', '-=18px');
     }else if(keyCode === 38) {
-      $key.css('margin-top', '-=8px');
+      $key.css('margin-top', '-=18px');
     }else if(keyCode === 39) {
-      $key.css('margin-left', '+=8px');
+      $key.css('margin-left', '+=18px');
     }else if(keyCode === 40) {
-      $key.css('margin-top', '+=8px');
+      $key.css('margin-top', '+=18px');
     }
   });
 
