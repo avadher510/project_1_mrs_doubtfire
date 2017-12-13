@@ -107,8 +107,9 @@ $(() => {
     const fallingPiecesOffsets = [];
     let piecesArraySingle = null;
 
-    for (let i=0; i<$piecesArray.length; i++) {
-      fallingPiecesOffsets.push($piecesArray[i].offset());
+    for (let i=0; i<$fallingPieces.length; i++) {
+      const fpPiece = $($fallingPieces[i]);
+      fallingPiecesOffsets.push(fpPiece.offset());
     }
 
     //GAME PIECE COLLISION
