@@ -9,10 +9,6 @@ $(() => {
   const $goodPieces = $('.good');
   const $badPieces = $('.bad');
   const $endZone = $('.falling-div-coll');
-  const $piecesArray = [$('.good-pos-one'), $('.good-pos-two'), $('.good-pos-three'), $('.good-pos-four'), $('.good-pos-five'), $('.good-pos-six'), $('.good-pos-seven'), $('.good-pos-eight'), $('.good-pos-nine'), $('.good-pos-ten'), $('.good-pos-eleven'), $('.good-pos-twelve'), $('.good-pos-thirteen'), $('.good-pos-fourteen'), $('.good-pos-fifteen'), $('.good-pos-sixteen'), $('.good-pos-seventeen'), $('.good-pos-eighteen'), $('.good-pos-nineteen'), $('.bad-pos-one'), $('.bad-pos-two') , $('.bad-pos-three') , $('.bad-pos-four') , $('.bad-pos-five') , $('.bad-pos-six') , $('.bad-pos-seven') , $('.bad-pos-eight') , $('.bad-pos-nine') , $('.bad-pos-ten') , $('.bad-pos-eleven') , $('.bad-pos-twelve')];
-
-  // const gameTrack = document.getElementById('maintrack');
-  // const $audio
   const $summaryLose = $('#lose');
   const $summaryWin = $('#win');
   const $scoreSumBox = $('.finalscore');
@@ -113,16 +109,14 @@ $(() => {
     }
 
     //GAME PIECE COLLISION
-    for(let i=0; i<$piecesArray.length; i++) {
+    for(let i=0; i<$fallingPieces.length; i++) {
+      const fpPiece2 = $($fallingPieces[i]);
       if(fallingPiecesOffsets[i].left <= $gamePieceOffset.left + $gamePiece.width() && fallingPiecesOffsets[i].left + $fallingPieces.width() > $gamePieceOffset.left && fallingPiecesOffsets[i].top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + fallingPiecesOffsets[i].top > $gamePieceOffset.top) {
-        // const alreadyCollected = $piecesArray[i].hasClass('collected');
-        // if (alreadyCollected) return false;
 
-        piecesArraySingle= $piecesArray[i].hasClass('good');
+        piecesArraySingle= fpPiece2.hasClass('good');
         if(piecesArraySingle) {
           // console.log('hit good one');
-          $($piecesArray[i]).removeClass('good');
-          $($piecesArray[i]).css('margin-top', '0');
+          $(fpPiece2.css('margin-top', '0'));
           positiveCollision();
         } else {
           // console.log('hit bad one');
