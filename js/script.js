@@ -52,7 +52,7 @@ $(() => {
   }
 
   // Fallings Pieces
-  let $fallingPieces = $('.piece');
+  const $fallingPieces = $('.piece');
   console.log($fallingPieces);
   let $gamePiece = $('.mrsDoubtfire');
   let $gamePieceOffset = $gamePiece.offset();
@@ -80,7 +80,7 @@ $(() => {
   let $pointCounter = $('#points-counter');
   // let gameWindow = $('#game-area')
   function collisionTest() {
-    $fallingPieces = $('.piece');
+
     // $fallingPiecesOffset = $fallingPieces.offset();
     $gamePiece = $('.mrsDoubtfire');
     $gamePieceOffset = $gamePiece.offset();
@@ -114,15 +114,18 @@ $(() => {
   }
 
   function positiveCollision() {
-    pointAcc = pointAcc + 10;
+    pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
   }
 
   function negativeCollision() {
-    pointAcc = pointAcc - 100;
+    pointAcc = pointAcc - 30;
     $pointCounter.text(pointAcc);
     startingLives = startingLives - 1;
     $livesLeft.text(startingLives);
+    if (startingLives === 0) {
+      endOfGame();
+    }
   }
 
   //ENDZONE working for each div specifically
@@ -160,6 +163,10 @@ $(() => {
       $key.css('margin-top', '+=8px');
     }
   });
+
+  function endOfGame() {
+    //
+  }
 
   function gameStart() {
     fallingPiecesGo();
