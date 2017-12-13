@@ -24,9 +24,6 @@ $(() => {
   let pointAcc = 0;
   let $pointCounter = $('#points-counter');
 
-
-
-
   //On Click of play button, then game begins
   $playButton.on('click', function() {
     $welcome.css('display', 'none');
@@ -90,7 +87,7 @@ $(() => {
       setInterval(() => {
         endZoneReach();
         $piece.css('marginTop', parseInt($piece.css('marginTop'))+ (Math.random()*(Math.random()*10)));
-      }, Math.random()*100);
+      }, Math.random()+100);
     }
   }
 
@@ -132,7 +129,7 @@ $(() => {
     pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
 
-    if (pointAcc === 1000) {
+    if (pointAcc === 2000) {
       endOfGameWin();
     }
   }
