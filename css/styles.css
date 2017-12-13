@@ -36,6 +36,10 @@ h1 {
   cursor: pointer;
 }
 
+.welcome p {
+  color: red;
+}
+
 .summary {
   display: none;
   position: fixed;

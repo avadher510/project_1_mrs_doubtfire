@@ -119,11 +119,13 @@ $(() => {
         piecesArraySingle= $piecesArray[i].hasClass('good');
         if(piecesArraySingle) {
           // console.log('hit good one');
-          positiveCollision();
+          $($piecesArray[i]).removeClass('good');
           $($piecesArray[i]).hide();
+          positiveCollision();
         } else {
           // console.log('hit bad one');
           negativeCollision();
+
         }
       }
     }
@@ -195,6 +197,7 @@ $(() => {
     $summaryLose.css('display', 'block');
     clearInterval(timerId);
     $gamePiece.css('display', 'none');
+    $('.piece').remove();
     $scoreSumBox.text(pointAcc);
     $livesSumBox.text(startingLives);
   }
@@ -203,6 +206,7 @@ $(() => {
     $summaryWin.css('display', 'block');
     clearInterval(timerId);
     $gamePiece.css('display', 'none');
+    $('.piece').remove();
     $scoreSumBox.text(pointAcc);
     $livesSumBox.text(startingLives);
   }
