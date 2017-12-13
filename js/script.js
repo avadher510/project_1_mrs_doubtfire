@@ -68,13 +68,10 @@ $(() => {
       const $piece = $($fallingPieces[i]);
       setInterval(() => {
         endZoneReach();
-        $piece.css('marginTop', parseInt($piece.css('marginTop'))+ (Math.random()+1));
-      }, Math.random());
+        $piece.css('marginTop', parseInt($piece.css('marginTop'))+ (Math.random()*(Math.random()*10)));
+      }, Math.random()*100);
     }
   }
-
-
-
 
   // const collisionCheck = function() {
   //
@@ -131,16 +128,17 @@ $(() => {
   //ENDZONE working for each div specifically
   function endZoneReach() {
     let piecesArrayEndZone = null;
-    for(let i = 0; i < $piecesArray.length; i++) {
-      if($piecesArray[i].offset().left <= $endZone.offset().left + $endZone.width() && $piecesArray[i].offset().left + $piecesArray[i].width() > $endZone.offset().left && $piecesArray[i].offset().top < $endZone.offset().top + $endZone.height() && $piecesArray[i].height() + $piecesArray[i].offset().top > $endZone.offset().top) {
-        piecesArrayEndZone= $piecesArray[i].hasClass('good');
+    for(let i = 0; i < $fallingPieces.length; i++) {
+      const ezPiece = $($fallingPieces[i]);
+      if(ezPiece.offset().left <= $endZone.offset().left + $endZone.width() && ezPiece.offset().left + ezPiece.width() > $endZone.offset().left && ezPiece.offset().top < $endZone.offset().top + $endZone.height() && ezPiece.height() + ezPiece.offset().top > $endZone.offset().top) {
+        piecesArrayEndZone= ezPiece.hasClass('good');
         if(piecesArrayEndZone === true) {
           console.log('You missed a good one');
           negativeCollision();
-          $piecesArray[i].hide();
+          ezPiece.hide();
         } else {
           console.log('bad one gone');
-          $piecesArray[i].hide();
+          ezPiece.hide();
         }
       }
     }
