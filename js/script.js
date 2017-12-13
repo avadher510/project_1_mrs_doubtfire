@@ -53,177 +53,24 @@ $(() => {
 
   // Fallings Pieces
   let $fallingPieces = $('.piece');
-  // let $fallingPiecesOffset = $fallingPieces.offset();
+  console.log($fallingPieces);
   let $gamePiece = $('.mrsDoubtfire');
   let $gamePieceOffset = $gamePiece.offset();
   const $endZone = $('.falling-div-coll');
-  // let $endZoneOffset = $endZone.offset();
-  // let $badPiece = ('.bad');
-  // let $goodPiece = ('.good');
   let pointAcc = 0;
-
   const $piecesArray = [$('.good-pos-one'), $('.good-pos-two'), $('.good-pos-three'), $('.good-pos-four'), $('.good-pos-five'), $('.good-pos-six'), $('.good-pos-seven'), $('.good-pos-eight'), $('.good-pos-nine'), $('.good-pos-ten'), $('.good-pos-eleven'), $('.good-pos-twelve'), $('.good-pos-thirteen'), $('.good-pos-fourteen'), $('.good-pos-fifteen'), $('.good-pos-sixteen'), $('.good-pos-seventeen'), $('.good-pos-eighteen'), $('.good-pos-nineteen'), $('.bad-pos-one'), $('.bad-pos-two') , $('.bad-pos-three') , $('.bad-pos-four') , $('.bad-pos-five') , $('.bad-pos-six') , $('.bad-pos-seven') , $('.bad-pos-eight') , $('.bad-pos-nine') , $('.bad-pos-ten') , $('.bad-pos-eleven') , $('.bad-pos-twelve')];
-  // const randomMathValue = Math.floor(Math.random()*31);
-  // const $goodOne = $('.good-pos-one');
-  // const $goodTwo = $('.good-pos-two');
-  // const $goodThree = $('.good-pos-three');
-  // const $goodFour = $('.good-pos-four');
-  // const $goodFive = $('.good-pos-five');
-  // const $goodSix = $('.good-pos-six');
-  // const $goodSeven = $('.good-pos-seven');
-  // const $goodEight = $('.good-pos-eight');
-  // const $goodNine = $('.good-pos-nine');
-  // const $goodTen = $('.good-pos-ten');
-  // const $goodEleven = $('.good-pos-eleven');
-  // const $goodTwelve = $('.good-pos-twelve');
-  // const $goodThirteen = $('.good-pos-thirteen');
-  // const $goodFourteen = $('.good-pos-fourteen');
-  // const $goodFifteen = $('.good-pos-fifteen');
-  // const $goodSixteen = $('.good-pos-sixteen');
-  // const $goodSeventeen = $('.good-pos-seventeen');
-  // const $goodEighteen = $('.good-pos-eighteen');
-  // const $goodNineteen = $('.good-pos-nineteen');
-  // const $badOne = $('.bad-pos-one');
-  // const $badTwo = $('.bad-pos-two');
-  // const $badThree = $('.bad-pos-three');
-  // const $badFour = $('.bad-pos-four');
-  // const $badFive = $('.bad-pos-five');
-  // const $badSix = $('.bad-pos-six');
-  // const $badSeven = $('.bad-pos-seven');
-  // const $badEight = $('.bad-pos-eight');
-  // const $badNine = $('.bad-pos-nine');
-  // const $badTen = $('.bad-pos-ten');
-  // const $badEleven = $('.bad-pos-11');
-  // const $badTwelve = $('.bad-pos-12');
-  let currentPiece = null;
+
+
+
   //FALLING PIECES ONE BY ONE
-  function fallingPieces() {
-    for(let i = 0; i < $piecesArray.length; i++){
+  function fallingPiecesGo() {
+    for(let i = 0; i < $fallingPieces.length; i++){
+      const $piece = $($fallingPieces[i]);
       setInterval(() => {
         endZoneReach();
-        currentPiece = $piecesArray[i].css('marginTop', parseInt($piecesArray[i].css('marginTop'))+1);
-      }, (Math.random() * 2) + 10);
+        $piece.css('marginTop', parseInt($piece.css('marginTop'))+ (Math.random()+1));
+      }, Math.random());
     }
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodTwo.css('marginTop', parseInt($goodTwo.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodThree.css('marginTop', parseInt($goodThree.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodFour.css('marginTop', parseInt($goodFour.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodFive.css('marginTop', parseInt($goodFive.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodSix.css('marginTop', parseInt($goodSix.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodSeven.css('marginTop', parseInt($goodSeven.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodEight.css('marginTop', parseInt($goodEight.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodNine.css('marginTop', parseInt($goodNine.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodTen.css('marginTop', parseInt($goodTen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodEleven.css('marginTop', parseInt($goodEleven.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodTwelve.css('marginTop', parseInt($goodTwelve.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodThirteen.css('marginTop', parseInt($goodThirteen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodFourteen.css('marginTop', parseInt($goodFourteen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodFifteen.css('marginTop', parseInt($goodFifteen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodSixteen.css('marginTop', parseInt($goodSixteen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodSeventeen.css('marginTop', parseInt($goodSeventeen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodEighteen.css('marginTop', parseInt($goodEighteen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $goodNineteen.css('marginTop', parseInt($goodNineteen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badOne.css('marginTop', parseInt($badOne.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badTwo.css('marginTop', parseInt($badTwo.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badThree.css('marginTop', parseInt($badThree.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badFour.css('marginTop', parseInt($badFour.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badFive.css('marginTop', parseInt($badFive.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badSix.css('marginTop', parseInt($badSix.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badSeven.css('marginTop', parseInt($badSeven.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badEight.css('marginTop', parseInt($badEight.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badNine.css('marginTop', parseInt($badNine.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badTen.css('marginTop', parseInt($badTen.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badEleven.css('marginTop', parseInt($badEleven.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
-    // setInterval(() => {
-    //   endZoneReach();
-    //   $badTwelve.css('marginTop', parseInt($badTwelve.css('marginTop'))+1);
-    // }, (Math.random()*15) * 30);
   }
 
 
@@ -317,7 +164,7 @@ $(() => {
   });
 
   function gameStart() {
-    fallingPieces();
+    fallingPiecesGo();
     startStopTimer();
     livesAtStart();
   }
