@@ -11,7 +11,10 @@ $(() => {
   const audioOnLoad = document.getElementById('welcome-hello');
   // const gameTrack = document.getElementById('maintrack');
   // const $audio
-  const $summary = $('.summary');
+  const $summaryLose = $('#lose');
+  const $summaryWin = $('#win');
+  const $scoreSumBox = $('.finalscore');
+  const $livesSumBox = $('.finallives')
   let startingLives = 3;
   let timeRemaining = 60;
   let timerIsRunning = false;
@@ -52,7 +55,7 @@ $(() => {
 
         if(timeRemaining === 0) {
           clearInterval(timerId);
-          endOfGame();
+          endOfGameLose();
         }
       }, 1000);
       timerIsRunning = true;
@@ -107,6 +110,9 @@ $(() => {
   function positiveCollision() {
     pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
+    if (pointAcc === 500) {
+      endOfGameWin();
+    }
   }
 
   //FUNCTIN FOR NEGATIVE COLLISION
@@ -116,7 +122,7 @@ $(() => {
     startingLives = startingLives - 1;
     $livesLeft.text(startingLives);
     if (startingLives === 0) {
-      endOfGame();
+      endOfGameLose();
     }
   }
 
@@ -157,9 +163,20 @@ $(() => {
   });
 
   //END OF GAME
-  function endOfGame() {
-    $summary.css('display', 'block');
+  function endOfGameLose() {
+    $summaryLose.css('display', 'block');
     clearInterval(timerId);
+    $gamePiece.css('display', 'none');
+    $scoreSumBox.text(pointAcc);
+    $livesSumBox.text(startingLives);
+  }
+
+  function endOfGameWin() {
+    $summaryWin.css('display', 'block');
+    clearInterval(timerId);
+    $gamePiece.css('display', 'none');
+    $scoreSumBox.text(pointAcc);
+    $livesSumBox.text(startingLives);
   }
 
   //CALLS TO START GAME

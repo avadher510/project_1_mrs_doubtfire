@@ -29,19 +29,29 @@
       <p>BUT avoid the bad ones (-5 points and lose a life).</p>
       <button id='play-btn'>PLAY!!</button>
     </div>
-    <div class="summary">
-      <h2>Good Effort but you are out of lives</h2>
-      <h3>Your Final Score is:
-      <p id='lifelostscore'></p>
+    <div class="summary" id='win'>
+      <h2>Congratulation YOU collected enough fruit</h2>
+      <h3>Your Final Score is: </h3>
+        <p class='finalscore'></p>
+      <h4>Lives Remaining </h4>
+        <p class='finallives'></p>
+      <button id='play-btn'>PLAY AGAIN!!</button>
+    </div>
+    <div class="summary" id='lose'>
+      <h2>Good Effort</h2>
+      <h3>Your Final Score is: </h3>
+        <p class='finalscore'></p>
+      <h4>Lives Remaining </h4>
+        <p class='finallives'></p>
       <button id='play-btn'>PLAY AGAIN!!</button>
     </div>
 
     <div id="game-area">
       <div class="flex-box">
         <div class="mrsDoubtfire">
-          <img src="images/mrs_doubtfire_game_piece.jpg" alt="Mrs Doubtfire Game Piece">
+          <img src="css/images/mrs_doubtfire_game_piece.jpg" alt="Mrs Doubtfire Game Piece">
         </div>
-        <div class="piece good good-pos-one"></div>
+        <div class="piece good good-pos-one"> </div>
         <div class="piece good good-pos-two"></div>
         <div class="piece bad bad-pos-one"></div>
         <div class="piece bad bad-pos-two"></div>
