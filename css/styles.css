@@ -124,22 +124,18 @@ h1 {
   margin: 0 1px 0 1px;
 }
 
+.selected {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  border: 3px solid black;
+  margin: 0 1px 0 1px;
+  background-color: grey;
+}
+
 .piece img {
   width: 26.8px;
   height: 30px;
 }
-
-/*.good-pos-one, .good-pos-five, .good-pos-eleven, .good-pos-sixteen {
-  background: url(images/apple30px.jpg);
-}
-
-.good-pos-two, .good-pos-six, .good-pos-twelve, .good-pos-seventeen {
-  background: url(images/grapes30px.jpg);
-}*/
-
-/*.bad {
-  background-color: red;
-}*/
-
 
 /*Footer Styles*/

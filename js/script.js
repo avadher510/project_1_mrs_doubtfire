@@ -120,7 +120,7 @@ $(() => {
         if(piecesArraySingle) {
           // console.log('hit good one');
           positiveCollision();
-          $piecesArray[i].hide();
+          $($piecesArray[i]).hide();
         } else {
           // console.log('hit bad one');
           negativeCollision();
@@ -134,7 +134,7 @@ $(() => {
     pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
 
-    if (pointAcc === 300) {
+    if (pointAcc === 1000) {
       endOfGameWin();
     }
   }
@@ -163,11 +163,9 @@ $(() => {
         piecesArrayEndZone= $ezPiece.hasClass('good');
 
         if(piecesArrayEndZone === true) {
-          console.log('You missed a good one');
           negativeCollision();
           $ezPiece.hide();
         } else {
-          console.log('bad one gone');
           $ezPiece.hide();
         }
       }
