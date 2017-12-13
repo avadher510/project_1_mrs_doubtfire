@@ -6,6 +6,8 @@ $(() => {
   const $livesLeft = $('#lives');
   const $countdownClock = $('#game-clock');
   const $fallingPieces = $('.piece');
+  const $goodPieces = $('.good');
+  const $badPieces = $('.bad');
   const $endZone = $('.falling-div-coll');
   const $piecesArray = [$('.good-pos-one'), $('.good-pos-two'), $('.good-pos-three'), $('.good-pos-four'), $('.good-pos-five'), $('.good-pos-six'), $('.good-pos-seven'), $('.good-pos-eight'), $('.good-pos-nine'), $('.good-pos-ten'), $('.good-pos-eleven'), $('.good-pos-twelve'), $('.good-pos-thirteen'), $('.good-pos-fourteen'), $('.good-pos-fifteen'), $('.good-pos-sixteen'), $('.good-pos-seventeen'), $('.good-pos-eighteen'), $('.good-pos-nineteen'), $('.bad-pos-one'), $('.bad-pos-two') , $('.bad-pos-three') , $('.bad-pos-four') , $('.bad-pos-five') , $('.bad-pos-six') , $('.bad-pos-seven') , $('.bad-pos-eight') , $('.bad-pos-nine') , $('.bad-pos-ten') , $('.bad-pos-eleven') , $('.bad-pos-twelve')];
   const audioOnLoad = document.getElementById('welcome-hello');
@@ -15,6 +17,8 @@ $(() => {
   const $summaryWin = $('#win');
   const $scoreSumBox = $('.finalscore');
   const $livesSumBox = $('.finallives');
+  const goodImagesArray = ['project_1/css/images/apple30px.jpg', 'project_1/css/images/grapes30px.jpg', 'project_1/css/images/banana30px.jpg', 'project_1/css/images/orange30px.jpg'];
+  const badImagesArray = ['project_1/css/images/grinch30px.jpg', 'project_1/css/images/car30px.jpg', 'project_1/css/images/mincepie30px.jpg', 'project_1/css/images/rock30px.jpg'];
   let startingLives = 3;
   let timeRemaining = 60;
   let timerIsRunning = false;
@@ -32,6 +36,23 @@ $(() => {
     $welcome.css('display', 'none');
     gameStart();
   });
+
+  //Load Game Piece Images Randomly
+  function gameImagesGood() {
+    for (let i=0; i<$goodPieces.length; i++) {
+      const ranMathGood = Math.floor(Math.random() * goodImagesArray.length);
+      console.log(ranMathGood);
+      $($goodPieces[i]).css('background-image', `url('../${goodImagesArray[ranMathGood]}')`);
+    }
+  }
+
+  function gameImagesBad() {
+    for (let i=0; i<$badPieces.length; i++) {
+      const ranMathBad = Math.floor(Math.random() * badImagesArray.length);
+      console.log(ranMathBad);
+      $($badPieces[i]).css('background-image', `url('../${badImagesArray[ranMathBad]}')`);
+    }
+  }
 
   // Game Pieces on load
   function loadPieces() {
@@ -66,7 +87,6 @@ $(() => {
       }, 1000);
       timerIsRunning = true;
     }
-    // when timer reaches 0 run playAgain() which change display of summary from none etc.
   }
 
   //FALLING PIECES ONE BY ONE
@@ -98,14 +118,11 @@ $(() => {
       if(fallingPiecesOffsets[i].left <= $gamePieceOffset.left + $gamePiece.width() && fallingPiecesOffsets[i].left + $fallingPieces.width() > $gamePieceOffset.left && fallingPiecesOffsets[i].top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + fallingPiecesOffsets[i].top > $gamePieceOffset.top) {
         piecesArraySingle= $piecesArray[i].hasClass('good');
         if(piecesArraySingle) {
-          console.log('hit good one');
+          // console.log('hit good one');
+          positiveCollision();
           $piecesArray[i].hide();
         } else {
-          console.log('hit bad one');
-        }
-        if(piecesArraySingle === true) {
-          positiveCollision();
-        }else{
+          // console.log('hit bad one');
           negativeCollision();
         }
       }
@@ -116,7 +133,8 @@ $(() => {
   function positiveCollision() {
     pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
-    if (pointAcc === 500) {
+
+    if (pointAcc === 300) {
       endOfGameWin();
     }
   }
@@ -127,7 +145,9 @@ $(() => {
     $pointCounter.text(pointAcc);
     startingLives = startingLives - 1;
     $livesLeft.text(startingLives);
+
     if (startingLives === 0) {
+      startingLives = 0;
       endOfGameLose();
     }
   }
@@ -135,10 +155,13 @@ $(() => {
   //ENDZONE working for each div specifically
   function endZoneReach() {
     let piecesArrayEndZone = null;
+
     for(let i = 0; i < $fallingPieces.length; i++) {
       const $ezPiece = $($fallingPieces[i]);
+
       if($ezPiece.offset().left <= $endZone.offset().left + $endZone.width() && $ezPiece.offset().left + $ezPiece.width() > $endZone.offset().left && $ezPiece.offset().top < $endZone.offset().top + $endZone.height() && $ezPiece.height() + $ezPiece.offset().top > $endZone.offset().top) {
         piecesArrayEndZone= $ezPiece.hasClass('good');
+
         if(piecesArrayEndZone === true) {
           console.log('You missed a good one');
           negativeCollision();
@@ -157,6 +180,7 @@ $(() => {
     const $key = $('.mrsDoubtfire');
     const keyCode = e.keyCode;
     collisionTest();
+
     if(keyCode === 37) {
       $key.css('margin-left', '-=8px');
     }else if(keyCode === 38) {
@@ -192,6 +216,8 @@ $(() => {
     livesAtStart();
     pointsAtStart();
     loadPieces();
+    gameImagesGood();
+    gameImagesBad();
   }
 
 });

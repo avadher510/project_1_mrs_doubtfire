@@ -129,17 +129,17 @@ h1 {
   height: 30px;
 }
 
-.good-pos-one, .good-pos-five, .good-pos-eleven, .good-pos-sixteen {
+/*.good-pos-one, .good-pos-five, .good-pos-eleven, .good-pos-sixteen {
   background: url(images/apple30px.jpg);
 }
 
 .good-pos-two, .good-pos-six, .good-pos-twelve, .good-pos-seventeen {
   background: url(images/grapes30px.jpg);
-}
+}*/
 
-.bad {
+/*.bad {
   background-color: red;
-}
+}*/
 
 
 /*Footer Styles*/
