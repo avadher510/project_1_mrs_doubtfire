@@ -116,11 +116,14 @@ $(() => {
     //GAME PIECE COLLISION
     for(let i=0; i<$piecesArray.length; i++) {
       if(fallingPiecesOffsets[i].left <= $gamePieceOffset.left + $gamePiece.width() && fallingPiecesOffsets[i].left + $fallingPieces.width() > $gamePieceOffset.left && fallingPiecesOffsets[i].top < $gamePieceOffset.top + $gamePiece.height() && $fallingPieces.height() + fallingPiecesOffsets[i].top > $gamePieceOffset.top) {
+        // const alreadyCollected = $piecesArray[i].hasClass('collected');
+        // if (alreadyCollected) return false;
+
         piecesArraySingle= $piecesArray[i].hasClass('good');
         if(piecesArraySingle) {
           // console.log('hit good one');
           $($piecesArray[i]).removeClass('good');
-          $($piecesArray[i]).hide();
+          $($piecesArray[i]).css('margin-top', '0');
           positiveCollision();
         } else {
           // console.log('hit bad one');

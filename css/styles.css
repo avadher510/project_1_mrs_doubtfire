@@ -63,6 +63,10 @@ h1 {
   cursor: pointer;
 }
 
+.collected {
+  visibility: hidden;
+}
+
 /*Game Area Styles*/
 #game-area {
   background: url(images/cartoon_sky_bg_game.png);
