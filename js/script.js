@@ -1,6 +1,6 @@
 $(() => {
 
-  // Variables
+  // DOM Variables
   const $playButton = $('#play-btn');
   const $welcome = $('.welcome');
   const $livesLeft = $('#lives');
@@ -17,14 +17,16 @@ $(() => {
   const $livesSumBox = $('.finallives');
   const goodImagesArray = ['project_1/css/images/apple30px.jpg', 'project_1/css/images/grapes30px.jpg', 'project_1/css/images/banana30px.jpg', 'project_1/css/images/orange30px.jpg'];
   const badImagesArray = ['project_1/css/images/grinch30px.jpg', 'project_1/css/images/car30px.jpg', 'project_1/css/images/mincepie30px.jpg', 'project_1/css/images/rock30px.jpg'];
+  const goodSound = document.querySelector('audio#goodup');
+  const badSound = document.querySelector('audio#badsound');
+  let $gamePiece = $('.mrsDoubtfire');
+  let $gamePieceOffset = $gamePiece.offset();
+  let $pointCounter = $('#points-counter');
   let startingLives = 3;
   let timeRemaining = 60;
   let timerIsRunning = false;
   let timerId = null;
-  let $gamePiece = $('.mrsDoubtfire');
-  let $gamePieceOffset = $gamePiece.offset();
   let pointAcc = 0;
-  let $pointCounter = $('#points-counter');
 
   //On Click of play button, then game begins
   $playButton.on('click', function() {
@@ -116,10 +118,10 @@ $(() => {
         if(piecesArraySingle) {
           // console.log('hit good one');
           $(fpPiece2.css('margin-top', '0'));
-          document.querySelector('audio#goodup').play();
           positiveCollision();
         } else {
           // console.log('hit bad one');
+          $(fpPiece2.css('margin-top', '0'));
           negativeCollision();
 
         }
@@ -131,6 +133,7 @@ $(() => {
   function positiveCollision() {
     pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
+    goodSound.play();
 
     if (pointAcc === 2000) {
       endOfGameWin();
@@ -143,6 +146,7 @@ $(() => {
     $pointCounter.text(pointAcc);
     startingLives = startingLives - 1;
     $livesLeft.text(startingLives);
+    badSound.play();
 
     if (startingLives === 0) {
       startingLives = 0;
