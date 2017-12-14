@@ -17,6 +17,7 @@ $(() => {
   const $livesSumBox = $('.finallives');
   const goodImagesArray = ['project_1/css/images/apple30px.jpg', 'project_1/css/images/grapes30px.jpg', 'project_1/css/images/banana30px.jpg', 'project_1/css/images/orange30px.jpg'];
   const badImagesArray = ['project_1/css/images/grinch30px.jpg', 'project_1/css/images/car30px.jpg', 'project_1/css/images/mincepie30px.jpg', 'project_1/css/images/rock30px.jpg'];
+  const audio = new Audio('aerosmith-dudelooks.mp3');
 
   let startingLives = 3;
   let timeRemaining = 60;
@@ -131,6 +132,7 @@ $(() => {
   function positiveCollision() {
     pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
+    audio.play();
 
     if (pointAcc === 2000) {
       endOfGameWin();
@@ -232,6 +234,7 @@ $(() => {
     loadPieces();
     gameImagesGood();
     gameImagesBad();
+    document.querySelector('audio#maintrack').play();
   }
 
 });
