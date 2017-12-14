@@ -9,12 +9,15 @@ $(() => {
   const $goodPieces = $('.good');
   const $badPieces = $('.bad');
   const $endZone = $('.falling-div-coll');
+  // const $summary = $('.summary');
+  // const $playBtn = $('.play-btn');
   const $summaryLose = $('#lose');
   const $summaryWin = $('#win');
   const $scoreSumBox = $('.finalscore');
   const $livesSumBox = $('.finallives');
   const goodImagesArray = ['project_1/css/images/apple30px.jpg', 'project_1/css/images/grapes30px.jpg', 'project_1/css/images/banana30px.jpg', 'project_1/css/images/orange30px.jpg'];
   const badImagesArray = ['project_1/css/images/grinch30px.jpg', 'project_1/css/images/car30px.jpg', 'project_1/css/images/mincepie30px.jpg', 'project_1/css/images/rock30px.jpg'];
+
   let startingLives = 3;
   let timeRemaining = 60;
   let timerIsRunning = false;
@@ -203,6 +206,22 @@ $(() => {
     $scoreSumBox.text(pointAcc);
     $livesSumBox.text(startingLives);
   }
+
+  //PLAY AGAIN
+  // $playBtn.on('click', function(){
+  //   playAgain();
+  // });
+  //
+  // function playAgain() {
+  //   startingLives = 3;
+  //   timeRemaining = 60;
+  //   timerId = null;
+  //   pointAcc = 0;
+  //   $summary.css('display', 'none');
+  //   $gamePiece.css({'margin-top': '410px', 'margin-left': '400px'});
+  //   $fallingPieces.css({'display': 'flex', 'margin-top': '0'});
+  //   gameStart();
+  // }
 
   //CALLS TO START GAME
   function gameStart() {
