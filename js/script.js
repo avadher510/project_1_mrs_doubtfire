@@ -180,7 +180,6 @@ $(() => {
         }
       }
     }
-
   }
 
   //Key presses
@@ -212,7 +211,6 @@ $(() => {
     $fallingPieces.css('margin-top', '0');
     $scoreSumBox.text(pointAcc);
     $livesSumBox.text(startingLives);
-
   }
 
   function endOfGameWin() {

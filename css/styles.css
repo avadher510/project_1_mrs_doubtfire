@@ -6,6 +6,7 @@ body {
   text-align: left;
   box-sizing: border-box;
   font-family: 'Audiowide', cursive;
+  overflow: hidden;
 }
 
 h1 {
@@ -62,7 +63,6 @@ h2 {
   display: none;
   position: relative;
   float: left;
-  /*margin-left: 400px;*/
   height: 480px;
   width: 880px;
   text-align: center;
@@ -178,3 +178,19 @@ h2 {
 }
 
 /*Footer Styles*/
+footer {
+  float: right;
+  margin-bottom: 10px;
+}
+
+footer img {
+  height: 50px;
+  width: 50px;
+  border-radius: 30%;
+  border: 3px ridge grey;
+  margin: 0 auto;
+}
+
+footer p {
+  font-size: 20px;
+}
