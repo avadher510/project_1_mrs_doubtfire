@@ -35,6 +35,7 @@ $(() => {
     //Sound in here as playGame is triggered if player plays again so track not needed to restart as it is looped
     document.querySelector('audio#maintrack').play();
     gameStart();
+    keyPressActivate();
   });
 
   //Load Game Piece Images Randomly
@@ -183,21 +184,23 @@ $(() => {
   }
 
   //Key presses
-  $(document).keydown(function(e) {
-    const $key = $('.mrsDoubtfire');
-    const keyCode = e.keyCode;
-    collisionTest();
+  function keyPressActivate() {
+    $(document).keydown(function(e) {
+      const $key = $('.mrsDoubtfire');
+      const keyCode = e.keyCode;
+      collisionTest();
 
-    if(keyCode === 37) {
-      $key.css('margin-left', '-=18px');
-    }else if(keyCode === 38) {
-      $key.css('margin-top', '-=18px');
-    }else if(keyCode === 39) {
-      $key.css('margin-left', '+=18px');
-    }else if(keyCode === 40) {
-      $key.css('margin-top', '+=18px');
-    }
-  });
+      if(keyCode === 37) {
+        $key.css('margin-left', '-=18px');
+      }else if(keyCode === 38) {
+        $key.css('margin-top', '-=18px');
+      }else if(keyCode === 39) {
+        $key.css('margin-left', '+=18px');
+      }else if(keyCode === 40) {
+        $key.css('margin-top', '+=18px');
+      }
+    });
+  }
 
   //END OF GAME
   function endOfGameLose() {
