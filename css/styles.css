@@ -11,8 +11,10 @@ body {
 
 h1 {
   display: inline-block;
-  padding-left: 10%;
+  margin-left: 10%;
   font-size: 35px;
+  color: #3AF73A;
+  background-color: rgba(0,0,0,.5);
 }
 
 /*GAME LOAD STYLES*/
@@ -134,10 +136,13 @@ h2 {
 .mrsDoubtfire {
   display: none;
   position: absolute;
-  height: 50px;
-  width: 20px;
+  height: 37px;
+  width: 30px;
   margin-top: 410px;
   margin-left: 400px;
+  border: 3px outset pink;
+  border-radius: 25%;
+  border-style:
 }
 
 .mrsDoubtfire img {
@@ -181,6 +186,7 @@ h2 {
 footer {
   float: right;
   margin-bottom: 10px;
+  color: white;
 }
 
 footer img {
@@ -193,4 +199,8 @@ footer img {
 
 footer p {
   font-size: 20px;
+}
+
+footer p .name {
+  font-weight: bold;
 }
