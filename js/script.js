@@ -9,8 +9,8 @@ $(() => {
   const $goodPieces = $('.good');
   const $badPieces = $('.bad');
   const $endZone = $('.falling-div-coll');
-  // const $summary = $('.summary');
-  // const $playBtn = $('.play-btn');
+  const $summary = $('.summary');
+  const $playBtn = $('.play-btn');
   const $summaryLose = $('#lose');
   const $summaryWin = $('#win');
   const $scoreSumBox = $('.finalscore');
@@ -27,10 +27,13 @@ $(() => {
   let timerIsRunning = false;
   let timerId = null;
   let pointAcc = 0;
+  let fallingTimerIdArr = [];
 
   //On Click of play button, then game begins
   $playButton.on('click', function() {
     $welcome.css('display', 'none');
+    //Sound in here as playGame is triggered if player plays again so track not needed to restart as it is looped
+    document.querySelector('audio#maintrack').play();
     gameStart();
   });
 
@@ -88,10 +91,17 @@ $(() => {
   function fallingPiecesGo() {
     for(let i = 0; i < $fallingPieces.length; i++){
       const $piece = $($fallingPieces[i]);
-      setInterval(() => {
+      const fallingTimerId = setInterval(() => {
         endZoneReach();
         $piece.css('marginTop', parseInt($piece.css('marginTop'))+ (Math.random()*(Math.random()*10)));
       }, Math.random()+100);
+      fallingTimerIdArr.push(fallingTimerId);
+    }
+  }
+
+  function fallingPieceClear() {
+    for (let i=0; i < fallingTimerIdArr.length; i++) {
+      clearInterval(fallingTimerIdArr[i]);
     }
   }
 
@@ -116,14 +126,11 @@ $(() => {
 
         piecesArraySingle= fpPiece2.hasClass('good');
         if(piecesArraySingle) {
-          // console.log('hit good one');
           $(fpPiece2.css('margin-top', '0'));
           positiveCollision();
         } else {
-          // console.log('hit bad one');
           $(fpPiece2.css('margin-top', '0'));
           negativeCollision();
-
         }
       }
     }
@@ -197,35 +204,41 @@ $(() => {
     $summaryLose.css('display', 'block');
     clearInterval(timerId);
     $gamePiece.css('display', 'none');
-    $('.piece').remove();
+    fallingPieceClear();
+    fallingTimerIdArr = [];
+    $fallingPieces.css('margin-top', '0');
     $scoreSumBox.text(pointAcc);
     $livesSumBox.text(startingLives);
+
   }
 
   function endOfGameWin() {
     $summaryWin.css('display', 'block');
     clearInterval(timerId);
     $gamePiece.css('display', 'none');
-    $('.piece').remove();
+    fallingPieceClear();
+    fallingTimerIdArr = [];
+    $fallingPieces.css('margin-top', '0');
     $scoreSumBox.text(pointAcc);
     $livesSumBox.text(startingLives);
   }
 
-  //PLAY AGAIN
-  // $playBtn.on('click', function(){
-  //   playAgain();
-  // });
-  //
-  // function playAgain() {
-  //   startingLives = 3;
-  //   timeRemaining = 60;
-  //   timerId = null;
-  //   pointAcc = 0;
-  //   $summary.css('display', 'none');
-  //   $gamePiece.css({'margin-top': '410px', 'margin-left': '400px'});
-  //   $fallingPieces.css({'display': 'flex', 'margin-top': '0'});
-  //   gameStart();
-  // }
+  // PLAY AGAIN
+  $playBtn.on('click', function(){
+    playAgain();
+  });
+
+  function playAgain() {
+    startingLives = 3;
+    timeRemaining = 60;
+    $countdownClock.text(timeRemaining);
+    timerId = null;
+    pointAcc = 0;
+    timerIsRunning = false;
+    $summary.css('display', 'none');
+    $gamePiece.css({'margin-top': '410px', 'margin-left': '400px'});
+    gameStart();
+  }
 
   //CALLS TO START GAME
   function gameStart() {
@@ -236,7 +249,6 @@ $(() => {
     loadPieces();
     gameImagesGood();
     gameImagesBad();
-    document.querySelector('audio#maintrack').play();
   }
 
 });
