@@ -15,8 +15,9 @@ $(() => {
   const $summaryWin = $('#win');
   const $scoreSumBox = $('.finalscore');
   const $livesSumBox = $('.finallives');
-  const goodImagesArray = ['project_1/css/images/apple30px.jpg', 'project_1/css/images/grapes30px.jpg', 'project_1/css/images/banana30px.jpg', 'project_1/css/images/orange30px.jpg'];
-  const badImagesArray = ['project_1/css/images/grinch30px.jpg', 'project_1/css/images/car30px.jpg', 'project_1/css/images/mincepie30px.jpg', 'project_1/css/images/rock30px.jpg'];
+  // css/images/banana30px.jpg
+  const goodImagesArray = ['./css/images/apple30px.jpg', './css/images/grapes30px.jpg', './css/images/banana30px.jpg', './css/images/orange30px.jpg'];
+  const badImagesArray = ['./css/images/grinch30px.jpg', './css/images/car30px.jpg', './css/images/mincepie30px.jpg', './css/images/rock30px.jpg'];
   const goodSound = document.querySelector('audio#goodup');
   const badSound = document.querySelector('audio#badsound');
   let $gamePiece = $('.mrsDoubtfire');
@@ -42,14 +43,14 @@ $(() => {
   function gameImagesGood() {
     for (let i=0; i<$goodPieces.length; i++) {
       const ranMathGood = Math.floor(Math.random() * goodImagesArray.length);
-      $($goodPieces[i]).css('background-image', `url('../${goodImagesArray[ranMathGood]}')`);
+      $($goodPieces[i]).css('background-image', `url('${goodImagesArray[ranMathGood]}')`);
     }
   }
 
   function gameImagesBad() {
     for (let i=0; i<$badPieces.length; i++) {
       const ranMathBad = Math.floor(Math.random() * badImagesArray.length);
-      $($badPieces[i]).css('background-image', `url('../${badImagesArray[ranMathBad]}')`);
+      $($badPieces[i]).css('background-image', `url('${badImagesArray[ranMathBad]}')`);
     }
   }
 
