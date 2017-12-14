@@ -15,7 +15,6 @@ $(() => {
   const $summaryWin = $('#win');
   const $scoreSumBox = $('.finalscore');
   const $livesSumBox = $('.finallives');
-  // css/images/banana30px.jpg
   const goodImagesArray = ['./css/images/apple30px.jpg', './css/images/grapes30px.jpg', './css/images/banana30px.jpg', './css/images/orange30px.jpg'];
   const badImagesArray = ['./css/images/grinch30px.jpg', './css/images/car30px.jpg', './css/images/mincepie30px.jpg', './css/images/rock30px.jpg'];
   const goodSound = document.querySelector('audio#goodup');

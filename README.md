@@ -26,7 +26,7 @@ Access online via these links:
 
 [GitHub](https://github.com/avadher510/project_1_mrs_doubtfire)
 
-HEROKU
+[HEROKU](https://mrs-doubtfire.herokuapp.com/)
 
 ***OR***
 
