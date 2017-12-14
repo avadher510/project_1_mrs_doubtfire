@@ -1,7 +1,7 @@
 /*General Page Styles*/
 
 body {
-  background: url(images/cartoon_sky_bg.jpg);
+  background: url(images/fruitwall.jpg);
   background-size: cover;
   text-align: left;
   box-sizing: border-box;
@@ -115,7 +115,7 @@ h2 {
 .features {
   display: inline-block;
   float: right;
-  margin: 0 auto;
+  margin-top: 5px;
   height: 70px;
   width: 100px;
   border: 3px ridge grey;
