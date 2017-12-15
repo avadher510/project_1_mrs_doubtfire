@@ -32,6 +32,14 @@ Access online via these links:
 
 Install Locally by downloading or cloning the GitHub repository here: [GitHub Repository](https://github.com/avadher510/project_1_mrs_doubtfire)
 
+### ***Approach to Project***
+
+The project had a planning phase which included writing out each step in the game and developing this into pseudocode which provided the framework for the development process.
+
+Following this, the project was broken down into small actionable pieces with a time frame. Upon reaching the end of this timeline, the code was reviewed and amendments to planning, if necessary, were made. 
+
+This helped throughout the development process to ensure completion of game functionality within the development timeframe. 
+
 ### ***Challenges***
 
 This project was challenging in various ways. An example of this is in the planning process, I created pseudocode to map out every step of the game. However upon game creation I realised that some of my game actions were too broad and required multiple steps to achieve the desired functionality. This was a key part in collision detection and the consequences that immediately occurred. 
