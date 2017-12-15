@@ -128,10 +128,10 @@ $(() => {
 
         piecesArraySingle= fpPiece2.hasClass('good');
         if(piecesArraySingle) {
-          $(fpPiece2.css('margin-top', '0'));
+          $(fpPiece2.animate({'margin-top': '0'}, 100, 'swing'));
           positiveCollision();
         } else {
-          $(fpPiece2.css('margin-top', '0'));
+          $(fpPiece2.animate({'margin-top': '0'}, 100, 'swing'));
           negativeCollision();
         }
       }
