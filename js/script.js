@@ -93,6 +93,7 @@ $(() => {
     for(let i = 0; i < $fallingPieces.length; i++){
       const $piece = $($fallingPieces[i]);
       const fallingTimerId = setInterval(() => {
+        scoreChecker();
         endZoneReach();
         $piece.css('marginTop', parseInt($piece.css('marginTop'))+ (Math.random()*(Math.random()*10)));
       }, Math.random()+100);
@@ -142,13 +143,16 @@ $(() => {
     pointAcc = pointAcc + 50;
     $pointCounter.text(pointAcc);
     goodSound.play();
+  }
 
+  //FUNCTION CHECKING FOR SCORE
+  function scoreChecker() {
     if (pointAcc === 2000) {
       endOfGameWin();
     }
   }
 
-  //FUNCTIN FOR NEGATIVE COLLISION
+  //FUNCTION FOR NEGATIVE COLLISION
   function negativeCollision() {
     pointAcc = pointAcc - 30;
     $pointCounter.text(pointAcc);
