@@ -229,10 +229,6 @@ $(() => {
   }
 
   // PLAY AGAIN
-  $playBtn.on('click', function(){
-    playAgain();
-  });
-
   function playAgain() {
     startingLives = 3;
     timeRemaining = 60;
@@ -244,6 +240,10 @@ $(() => {
     $gamePiece.css({'margin-top': '410px', 'margin-left': '400px'});
     gameStart();
   }
+
+  $playBtn.on('click', function(){
+    playAgain();
+  });
 
   //CALLS TO START GAME
   function gameStart() {
